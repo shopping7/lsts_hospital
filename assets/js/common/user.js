@@ -19,25 +19,22 @@ $(function () {
     });
 
     function showProfile(data) {
-        var str = '';//定义用于拼接的字符串
-        for (var user in data) {
-            var json = eval('(' + user + ')');
-            str = '<strong>姓名</strong>\n' +
-                '                        <p>' + json.username + '</p>\n' +
+        var str = '<strong>姓名</strong>\n' +
+                '                        <p>' + data.username + '</p>\n' +
                 '                        <strong>性别</strong>\n' +
-                '                        <p>' + json.sex + '</p>\n' +
+                '                        <p>' + data.sex + '</p>\n' +
                 '                        <strong>邮箱</strong>\n' +
-                '                        <p>' + json.email + '</p>\n' +
+                '                        <p>' + data.email + '</p>\n' +
                 '                        <strong>联系号码</strong>\n' +
-                '                        <p>' + json.phone + '</p>\n' +
+                '                        <p>' + data.phone + '</p>\n' +
                 '                        <strong>属性</strong>\n' +
-                '                        <address>' + data[user] + '</address>';
+                '                        <address>' + data.attr + '</address>';
             //追加到table中
             $("#personal_info").append(str);
-            var name = '<strong>'+json.username+'</strong>';
+            var name = '<strong>'+data.username+'</strong>';
             $(".showName").append(name);
-        }
     }
+
 
     $("#getPKButton").click(function () {
         $.ajax({
