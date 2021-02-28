@@ -14,8 +14,12 @@ $(function () {
                 "<td class='txt-oflo'>" + data[i].attr + "</td>" +
                 "<td class='txt-oflo'>"+data[i].info+"</td>" +
                 "<td class=\"txt-oflo\">" +
-                "   <i class=\"zmdi zmdi-edit\"></i>&nbsp;&nbsp;&nbsp;" +
-                "   <i class=\"zmdi zmdi-delete\"></i></td>" +
+                "            <span class=\"js-sweetalert\">\n" +
+                "                <button class=\"btn btn-raised btn-default btn-circle waves-effect waves-circle waves-float\" data-type="+ data[i].attr +"><i class=\"zmdi zmdi-edit\"></i></button>\n" +
+                "            </span>" +
+                "            <span class=\"js-deletealert\">\n" +
+                "                <button class=\"btn btn-raised btn-default btn-circle waves-effect waves-circle waves-float\" data-type="+ data[i].attr +"><i class=\"zmdi zmdi-delete\"></i></button>\n" +
+                "            </span>" +
                 "</tr>";
             //追加到table中
             $("#tab").append(str);
@@ -55,6 +59,7 @@ $(function () {
             },
             success : function(data) {
                 alert("添加属性成功!")
+                window.location.reload();
             },
             error : function() {
                 alert("添加属性失败!")
@@ -77,7 +82,13 @@ $(function () {
                 '                                <a href="#" class="p-profile-pix"><img src="assets/images/patients/random-avatar3.jpg" alt="user" class="img-thumbnail img-fluid"></a>\n' +
                 '                            </div>\n' +
                 '                            <div class="col-md-8 col-sm-8 m-b-0">\n' +
-                '                                <h5 class="m-b-0">'+data[i].username+'<a href="#" class="edit"><i class="zmdi zmdi-edit"></i></a></h5> <small>邮箱：'+data[i].email+'</small>\n' +
+                '                                <h5 class="m-b-0">'+data[i].username+
+                '                                    <a href="#" class="edit">\n' +
+                '                                        <i class="zmdi zmdi-delete"></i>\n' +
+                '                                    </a>\n' +
+                '                                    <a href="#" class="edit">\n' +
+                '                                        <i class="zmdi zmdi-edit">&nbsp;&nbsp;</i>\n' +
+                '                                    </a></h5> <small>邮箱：'+data[i].email+'</small>\n' +
                 '                                <address class="m-b-0">\n' +
                 '                                    属性：'+data[i].attr+'<br>\n' +
                 '                                    <abbr title="Phone">电话:</abbr> '+data[i].phone+'\n' +
@@ -89,12 +100,6 @@ $(function () {
                 '            </div>'
             $("#show_users").append(str);
         }
-        // for(var user in data){
-        //     var json = eval('('+user+')');
-        //     str = ''
-        //     //追加到table中
-        //
-        // }
     };
 
     //添加新用户
@@ -116,7 +121,8 @@ $(function () {
                 withCredentials: true
             },
             success : function(data) {
-                alert("添加用户成功!")
+                alert("添加用户成功!");
+                window.location.reload();
             },
             error : function() {
                 alert("添加用户失败!")
@@ -189,7 +195,7 @@ $(function () {
             '\n' +
             '                            <p class="text-muted">'+data.attr+'</p>                           \n' +
             '                            <a href="profile.html"  class="btn btn-raised btn-sm">查看详情</a>\n' +
-            '                            <button type="button" value='+data.username+' id="isAddBlack" onclick=""  class="btn btn-raised g-bg-cyan">加入黑名单</button>\n'+
+            '                            <button type="button" value='+data.username+' id="isAddBlack" class="btn btn-raised g-bg-cyan">加入黑名单</button>\n'+
             '                        </div>\n' +
             '                    </div>\n' +
             '                </div>\n' +

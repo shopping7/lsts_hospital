@@ -210,12 +210,10 @@
         <!-- User Info -->
         <div class="user-info">
             <div class="admin-image"> <img src="assets/images/random-avatar7.jpg" alt=""> </div>
-            <div class="admin-action-info"> <span>Welcome</span>
-                <h3>Dr. John</h3>
+            <div class="admin-action-info"> <span>欢迎</span>
+                <h3 class="showName"></h3>
                 <ul>
-                    <li><a data-placement="bottom" title="Go to Inbox" href="mail-inbox.html"><i class="zmdi zmdi-email"></i></a></li>
-                    <li><a data-placement="bottom" title="Go to Profile" href="profile.html"><i class="zmdi zmdi-account"></i></a></li>                    
-                    <li><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="zmdi zmdi-settings"></i></a></li>
+                    <li><a data-placement="bottom" title="Go to Profile" href="profile.html"><i class="zmdi zmdi-account"></i></a></li>
                     <li><a data-placement="bottom" title="Full Screen" href="sign-in.html" ><i class="zmdi zmdi-sign-in"></i></a></li>
                 </ul>
             </div>
@@ -431,16 +429,29 @@
 						</ul>
 					</div>
 					<div class="body">
-                        <form method="post" id="upload_file_form" enctype="multipart/form-data" >
 
+                        <div id="addSelectPosition">
                         <div class="row clearfix">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" name="policy" value="hospital&doctor&(headache|(flu&heart))">
-                                    </div>
+<!--                            <div class="col-sm-12">-->
+<!--                                <div class="form-group">-->
+<!--                                    <div class="form-line">-->
+<!--                                        <input type="text" class="form-control" name="policy" value="hospital&doctor&(headache|(flu&heart))">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="form-group drop-custum">
+                                    <select class="form-control show-tick" name="policyAttr">
+                                        <option value="" >-- 属性 --</option>
+                                        <option value="Cash">Cash</option>
+                                    </select>
                                 </div>
                             </div>
+                            <button type="button"  id="addSelectInput" class="btn btn-raised btn-default btn-circle waves-effect waves-circle waves-float"> <i class="material-icons">add</i> </button>
+                        </div>
+                        </div>
+                        <form method="post" id="upload_file_form" enctype="multipart/form-data" >
+                        <div class="row clearfix">
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <div class="form-line">
@@ -469,6 +480,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-12">
+<!--                                <button type="button" id="test_select" class="btn btn-raised g-bg-cyan">提交</button>-->
                                 <button type="button" id="upload_btn" class="btn btn-raised g-bg-cyan">提交</button>
                                 <button type="submit" class="btn btn-raised">取消</button>
                             </div>
@@ -499,5 +511,6 @@
 <script src="assets/bundles/morphingscripts.bundle.js"></script><!-- morphing search page js --> 
 <script src="assets/js/pages/forms/basic-form-elements.js"></script>
 <script src="assets/js/common/user.js"></script>
+<script src="assets/js/common/upload_file.js"></script>
 </body>
 </html>
