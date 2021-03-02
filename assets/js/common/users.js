@@ -2,15 +2,14 @@ $(function () {
     // $('.js-sweetalert').on('click', function () {
     //
     // });
-    $(document).on("click", ".js-sweetalert", function (e) {
-        var attr = $(this).data('type');
-        console.log(11)
-        // showPromptMessage(attr);
+    $(document).on("click", ".js-sweetalert button", function (e) {
+        var username = $(this).data('type');
+        showPromptMessage(username);
     });
-    function showPromptMessage(attr) {
+    function showPromptMessage(username) {
         swal({
-            title: "修改属性描述!",
-            text: "属性："+attr,
+            title: "修改用户属性!",
+            text: "用户："+username,
                 // +"属性描述 <input type='text' name='attrinfo'>",
             type: "input",
             showCancelButton: true,
@@ -24,38 +23,40 @@ $(function () {
             }
             console.log(attr);
             console.log(inputValue)
-            $.ajax({
-                url : "http://localhost:9000/editAttr",
-                xhrFields: {
-                    withCredentials: true
-                },
-                async : false,
-                type : "POST",
-                contentType : 'application/json',
-                dataType : 'json',
-                data :JSON.stringify({
-                    "attr" : attr,
-                    "info" : inputValue}),
-                success : function(result) {
-                    swal("成功修改属性描述");
-                    window.location.reload();
-                },
-                error : function() {
-                    alert("修改属性描述失败!")
-                }
-            });
+            // $.ajax({
+            //     url : "http://localhost:9000/editUser",
+            //     xhrFields: {
+            //         withCredentials: true
+            //     },
+            //     async : false,
+            //     type : "POST",
+            //     contentType : 'application/json',
+            //     dataType : 'json',
+            //     data :JSON.stringify({
+            //         "username" : username,
+            //         "attr" : inputValue}),
+            //     success : function(result) {
+            //         swal("成功修改属性描述");
+            //         window.location.reload();
+            //     },
+            //     error : function() {
+            //         alert("修改属性描述失败!")
+            //     }
+            // });
 
         });
     }
 
     $(document).on("click", ".js-deletealert button", function (e) {
-        var attr = $(this).data('type');
-        showConfirmMessage(attr);
+        var username = $(this).data('type');
+        console.log(username);
+        showConfirmMessage(username);
     });
-    function showConfirmMessage(attr) {
+    function showConfirmMessage(username) {
+        console.log(1)
         swal({
-            title: "确定删除该属性?",
-            text: "确定删除【"+attr+"】属性!",
+            title: "确定删除该用户?",
+            text: "确定删除【"+username+"】用户!",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -64,7 +65,7 @@ $(function () {
             html: true,
         }, function () {
             $.ajax({
-                url : "http://localhost:9000/deleteAttr",
+                url : "http://localhost:9000/deleteUser",
                 xhrFields: {
                     withCredentials: true
                 },
@@ -72,13 +73,13 @@ $(function () {
                 type : "POST",
                 contentType : 'application/json',
                 dataType : 'json',
-                data :JSON.stringify({"attr" : attr}),
+                data :JSON.stringify({"username" : username}),
                 success : function(result) {
-                    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                    swal("成功删除!", "该用户成功删除.", "success");
                     window.location.reload();
                 },
                 error : function() {
-                    alert("修改属性描述失败!")
+                    alert("删除用户失败!")
                 }
             });
 

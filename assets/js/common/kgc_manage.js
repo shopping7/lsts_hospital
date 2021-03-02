@@ -4,6 +4,7 @@ $(function () {
     $.get("http://localhost:9000/attrs",{},function (result) {
         showData(result.data);
         showSelectData(result.data);
+        showUserAttr(result.data);
     });
     //展示数据
     function showData(data) {
@@ -49,6 +50,28 @@ $(function () {
         }
     }
 
+    function showUserAttr(data){
+        var str = "";//定义用于拼接的字符串
+        for (var i = 0; i < data.length; i++) {
+            str = '<tr>\n' +
+                '      <td>\n' +
+                '          <div>\n' +
+                '               <span>' + data[i].attr + '</span>\n' +
+                '          </div>\n' +
+                '       </td>\n' +
+                '      <td>\n' +
+                '         <div class="switch">\n' +
+                '             <label>\n' +
+                '                <input type="checkbox" name="UserSelectAttr" value=' + data[i].attr + '>\n' +
+                '                <span class="lever"></span>\n' +
+                '             </label>\n' +
+                '         </div>\n' +
+                '      </td>\n' +
+                ' </tr>'
+            $("#select_user_attr").append(str);
+        }
+    }
+
     //添加属性
     $("#addAttrButton").click(function () {
         $.post({
@@ -83,21 +106,24 @@ $(function () {
                 '                            </div>\n' +
                 '                            <div class="col-md-8 col-sm-8 m-b-0">\n' +
                 '                                <h5 class="m-b-0">'+data[i].username+
-                '                                    <a href="#" class="edit">\n' +
-                '                                        <i class="zmdi zmdi-delete"></i>\n' +
-                '                                    </a>\n' +
-                '                                    <a href="#" class="edit">\n' +
-                '                                        <i class="zmdi zmdi-edit">&nbsp;&nbsp;</i>\n' +
-                '                                    </a></h5> <small>邮箱：'+data[i].email+'</small>\n' +
-                '                                <address class="m-b-0">\n' +
-                '                                    属性：'+data[i].attr+'<br>\n' +
-                '                                    <abbr title="Phone">电话:</abbr> '+data[i].phone+'\n' +
-                '                                </address>\n' +
+                '                                    <span class="js-deletealert edit">\n' +
+                '                                        <button class=" btn-default waves-effect" style="margin: 0px;border:none;" data-type='+data[i].username+'>\n' +
+                '                                            <i class="zmdi zmdi-delete" style="color:#0275d8"></i>\n' +
+                '                                        </button>\n' +
+                '                                    </span>\n' +
+                '                                    <a href="user_detail.html?username='+encodeURI(data[i].username)+'" class="edit"><i class="zmdi zmdi-edit"></i></a>' +
+                '                                </h5> ' +
+                '                                <small>邮箱:'+data[i].email+'</small>\n<br>' +
+                '                                <span style="word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;">属性：'+data[i].attr+'</span><br>' +
+                '                                <small>' +
+                '                                    电话:'+data[i].phone+'\n' +
+                '                                </small>\n' +
                 '                            </div>\n' +
                 '                        </div>\n' +
                 '                    </div>\n' +
                 '                </div>\n' +
                 '            </div>'
+            // str = ''
             $("#show_users").append(str);
         }
     };
@@ -130,6 +156,7 @@ $(function () {
         })
     });
 
+
     function getSelectAttr(obj){
         var arr=new Array();
         for(var i=0;i<obj.length;i++){
@@ -151,10 +178,53 @@ $(function () {
             str = '<tr>\n' +
                 '                                    <td>'+(i+1)+'</td>\n' +
                 '                                    <td>'+data[i].username+'</td>\n' +
-                '                                    <td>删除</td>\n' +
+                '                                    <td><span class="js-deletealert edit deleteBlack">\n' +
+                '                                        <button class="btn-default waves-effect " style="margin: 0px;border:none;" data-type='+data[i].username+'>\n' +
+                '                                            <i class="zmdi zmdi-delete" style="color:#0275d8"></i>\n' +
+                '                                        </button>\n' +
+                '                                    </span></td>\n' +
                 '                                </tr>'
             $("#black_table").append(str)
         }
+    }
+
+    $(document).on("click", ".deleteBlack button", function (e) {
+        var username = $(this).data('type');
+        console.log(username);
+        deleteBlackConfirmMessage(username);
+    })
+
+    function deleteBlackConfirmMessage(username) {
+        swal({
+            title: "确定从黑名单移除该用户?",
+            text: "确定从黑名单移除【"+username+"】用户!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "是的，移除!",
+            closeOnConfirm: false,
+            html: true,
+        }, function () {
+            $.ajax({
+                url : "http://localhost:9000/deleteBlack",
+                xhrFields: {
+                    withCredentials: true
+                },
+                async : false,
+                type : "POST",
+                contentType : 'application/json',
+                dataType : 'json',
+                data :JSON.stringify({"username" : username}),
+                success : function(result) {
+                    swal("成功移除!", "该用户成功移除.", "success");
+                    window.location.reload();
+                },
+                error : function() {
+                    alert("移除用户失败!")
+                }
+            });
+
+        });
     }
 
     $("#trance_btn").click(function () {

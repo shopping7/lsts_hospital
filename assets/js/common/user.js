@@ -92,11 +92,14 @@ $(function () {
             data :new FormData(document.getElementById('get_File_Form')),
             success : function(result) {
                 // console.log(result.data.length);
-                for(var i = 0; i < result.data.length;i++){
-                    // window.open(result.data[i]);
-                    console.log(i);
-                    downloadFile(result.data[i]);
+                if(result.data){
+                    for(var i = 0; i < result.data.length;i++){
+                        // window.open(result.data[i]);
+                        console.log(i);
+                        downloadFile(result.data[i]);
+                    }
                 }
+
 
             },
             error : function() {
