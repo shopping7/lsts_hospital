@@ -28,10 +28,11 @@ $(function () {
     });
 
     function showProfile(data) {
+        const sex = data.sex ? "男":"女";
         var str = '<strong>姓名</strong>\n' +
                 '                        <p>' + data.username + '</p>\n' +
                 '                        <strong>性别</strong>\n' +
-                '                        <p>' + data.sex + '</p>\n' +
+                '                        <p>' + sex + '</p>\n' +
                 '                        <strong>邮箱</strong>\n' +
                 '                        <p>' + data.email + '</p>\n' +
                 '                        <strong>联系号码</strong>\n' +

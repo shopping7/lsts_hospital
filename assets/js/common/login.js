@@ -1,10 +1,10 @@
 $(function () {
+
     $('#btn_sub').click(function () {
         var username = $("#username").val();
         var password = $("#password").val();
-        console.log(username);
         $.ajax({
-            url : "http://localhost:9000/user/login",
+            url : "http://localhost:9000/kgc-user/login",
             xhrFields: {
                 withCredentials: true
             },
@@ -12,16 +12,15 @@ $(function () {
             type : "POST",
             contentType : 'application/json',
             dataType : 'json',
-            data :JSON.stringify({"username" : "张三","password" : "123456"}),
+            data :JSON.stringify({"username" : "Alice","password" : "123456"}),
             success : function(result) {
-                localStorage.setItem('loginUser',JSON.stringify(result.data));
-                location.href = "upload_file.html";
+                location.href = "users.html";
             },
             error : function() {
                 alert("登录失败!")
             }
         });
-    });zhang
+    });
 
 
 

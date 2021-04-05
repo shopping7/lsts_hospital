@@ -22,11 +22,6 @@
 
 <!-- Swift Themes. You can choose a theme from css/themes instead of get all themes -->
 <link href="assets/css/themes/all-themes.css" rel="stylesheet" />
-    <style>
-        .buttons{
-            margin-left: 10px;
-        }
-    </style>
 </head>
 
 <body class="theme-cyan">
@@ -60,9 +55,8 @@
         </div>
     </form>
     <div class="morphsearch-content">
-
     </div>
-    <!-- /morphsearch-content -->
+    <!-- /morphsearch-content --> 
     <span class="morphsearch-close"></span> </div>
 <!-- Top Bar -->
 <nav class="navbar clearHeader">
@@ -81,17 +75,19 @@
         <div class="user-info">
             <div class="admin-image"> <img src="assets/images/random-avatar7.jpg" alt=""> </div>
             <div class="admin-action-info"> <span>欢迎</span>
-                <h3 class="showName"></h3>
+                <h3>Dr. John</h3>
                 <ul>
-                    <li><a data-placement="bottom" title="Go to Profile" href="profile.html"><i class="zmdi zmdi-account"></i></a></li>
+                    <li><a data-placement="bottom" title="Go to Inbox" href="mail-inbox.html"><i class="zmdi zmdi-email"></i></a></li>
+                    <li><a data-placement="bottom" title="Go to Profile" href="profile.html"><i class="zmdi zmdi-account"></i></a></li>                    
+                    <li><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="zmdi zmdi-settings"></i></a></li>
                     <li><a data-placement="bottom" title="Full Screen" href="sign-in.html" ><i class="zmdi zmdi-sign-in"></i></a></li>
                 </ul>
             </div>
             <div class="quick-stats">
-                <h5>我的密钥</h5>
+                <h5>当前情况</h5>
                 <ul>
-                    <li><span>公钥<i>Public Key</i></span></li>
-                    <li><span>私钥<i>Secret Key</i></span></li>
+                    <li><span>20<i>系统用户</i></span></li>
+                    <li><span>32<i>系统文件</i></span></li>
                 </ul>
             </div>
         </div>
@@ -100,15 +96,23 @@
         <div class="menu">
             <ul class="list">
                 <li class="header">目录</li>
-                <li class="active open"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-balance-wallet"></i><span>文件管理</span> </a>
+                <li class="active open"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-o"></i><span>系统管理</span> </a>
                     <ul class="ml-menu">
-                        <li class="active"> <a href="upload_file.html">上传文件</a></li>
-                        <li> <a href="get_file.html">下载文件</a></li>
+                        <li class="active"><a href="syspara.html">系统参数</a></li>
+                        <li><a href="trance.html">用户追溯</a></li>
+                        <li><a href="black.html">黑用户名单</a></li>
                     </ul>
                 </li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-o"></i><span>个人中心</span> </a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-add"></i><span>用户管理</span> </a>
                     <ul class="ml-menu">
-                        <li><a href="profile.html">个人信息</a></li>
+                        <li><a href="users.html">所有用户</a></li>
+                        <li><a href="add-user.html">添加用户</a></li>
+                    </ul>
+                </li>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span>属性管理</span></a>
+                    <ul class="ml-menu">
+                        <li><a href="attrs.html">所有属性</a></li>
+                        <li><a href="add-attr.html">添加属性</a></li>
                     </ul>
                 </li>
             </ul>
@@ -119,7 +123,7 @@
     <!-- Right Sidebar -->
     <aside id="rightsidebar" class="right-sidebar">
         <ul class="nav nav-tabs tab-nav-right" role="tablist">
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#skins">皮肤</a></li>
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#skins">Skins</a></li>
         </ul>
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane in active in active" id="skins">
@@ -161,102 +165,48 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>上传文件</h2>
-            <small class="text-muted">欢迎来到上传文件页面</small>
+            <h2>系统参数管理页面</h2>
+            <small class="text-muted"></small>
         </div>
         <div class="row clearfix">
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<div class="card">
 					<div class="header">
-						<h2>文件基本信息<small>设置文件访问策略和文件关键词后即可上传文件</small> </h2>
+						<h2>初始化系统参数<small>首次使用系统需初始化系统参数</small> </h2>
 					</div>
 					<div class="body">
-<!--                        <div id="addSelectPosition">-->
-<!--                            &lt;!&ndash;内容&ndash;&gt;-->
-<!--                        <div class="row clearfix">-->
-<!--                            <div class="col-sm-3 col-xs-6">-->
-<!--                                <div class="form-group drop-custum">-->
-<!--                                    <select class="form-control show-tick" name="policyAttr">-->
-<!--                                        <option value="" >&#45;&#45; 属性 &#45;&#45;</option>-->
-<!--                                        <option value="Cash">Cash</option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <button type="button"  id="addSelectInput" class="btn btn-raised btn-default btn-circle waves-effect waves-circle waves-float"> <i class="material-icons">add</i> </button>-->
-<!--                        </div>-->
-<!--                        </div>-->
-                        <form method="post" id="upload_file_form" enctype="multipart/form-data" >
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="calculator">
-                                            <div class="calc-screen">
-                                                <div class="calc-result form-line"><input type="text" name="policy" class="data form-control" placeholder="文件策略（请点击下方的操作和属性进行编辑）" readonly></div>
-                                            </div>
-                                            <br>
-                                            <div class="calc-buttons" id="addSelectAttr">
-                                                <span>操作：</span>
-                                                <input type="button" class="buttons" value="清空">
-                                                <input type="button" class="buttons" value="←">
-                                                <input type="button" class="buttons" value="(">
-                                                <input type="button" class="buttons" value=")">
-                                                <input type="button" class="buttons" value="|">
-                                                <input type="button" class="buttons" value="&">
-                                                <br><br>
-                                                <span>属性：</span>
-                                                <!--				<input type="button" class="buttons equals" value="确定">-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row clearfix">
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="keyword" class="form-control" placeholder="文件关键词">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         <div class="row clearfix">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-<!--                                <form action="/" id="frmFileUpload" class="dropzone" method="post" enctype="multipart/form-data">-->
-<!--                                    <div class="dz-message">-->
-<!--                                        <div class="drag-icon-cph"> <i class="material-icons">touch_app</i> </div>-->
-<!--                                        <h3>Drop files here or click to upload.</h3>-->
-<!--                                        <em>(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</em> -->
-<!--                                    </div>-->
-<!--                                    <div class="fallback">-->
-<!--                                        <input name="file" type="file" multiple />-->
-<!--                                    </div>-->
-<!--                                </form>-->
-                                <p>
-                                    <label>上传文件：</label>
-                                    <span class="field">
-                            	        <input type="file" id="upload_file" name="file" />
-                                    </span>
-                                </p>
-                            </div>
                             <div class="col-sm-12">
-<!--                                <button type="button" id="test_select" class="btn btn-raised g-bg-cyan">提交</button>-->
-                                <button type="button" id="upload_btn" class="btn btn-raised g-bg-cyan">提交</button>
-                                <button type="submit" class="btn btn-raised">取消</button>
+                                <button type="button" class="btn btn-raised g-bg-cyan">初始化系统参数</button>
                             </div>
-
                         </div>
-                        </form>
                     </div>
 				</div>
 			</div>
 		</div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>更新系统参数<small>若系统出现问题，可尝试更新系统参数，非特殊情况下不要更新，系统参数一旦更新，系统内所有加密文件都无法解密</small> </h2>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-sm-12">
+                                <button type="button" class="btn btn-raised g-bg-cyan">更新系统参数</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 <div class="color-bg"></div>
 <!-- Jquery Core Js --> 
 <script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
-<script src="assets/bundles/morphingsearchscripts.bundle.js"></script> <!-- morphing search Js -->
+<script src="assets/bundles/morphingsearchscripts.bundle.js"></script> <!-- morphing search Js --> 
 <script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
 
 
@@ -269,15 +219,7 @@
 <script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
 <script src="assets/bundles/morphingscripts.bundle.js"></script><!-- morphing search page js --> 
 <script src="assets/js/pages/forms/basic-form-elements.js"></script>
-<script src="assets/js/common/app.js"></script>
-<script src="assets/js/common/user.js"></script>
-<script src="assets/js/common/upload_file.js"></script>
-<script>
-    Calculator({
-        el: '.calculator',
-        buttons: '.calc-buttons',
-        output: '.calc-result>.data'
-    });
-</script>
+<script src="assets/js/common/jquery.serializejson.min.js"></script>
+<script src="assets/js/common/kgc_manage.js"></script>
 </body>
 </html>
